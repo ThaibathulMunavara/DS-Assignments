@@ -32,7 +32,14 @@ Create a class `Point` with three properties: `x`, `y`, and `z`.
             self.z = z
 
         def sqSum(self):
-            pass
+            return (self.x**2 + self.y**2 +self.z**2)
+
+    x = int(input("Enter the number : "))
+    y = int(input("Enter the number: "))
+    z = int(input("Enter the number: "))       
+    obj = Point(x,y,z)
+    result = obj.sqSum()
+    print(f"Result : {result}")
 
 ## Challenge 2: Implement a Calculator Class
 
@@ -86,15 +93,33 @@ Coding exercise
     class Calculator:
 
         def __init__(self):
-            pass
+            self.num1 = float(input("Enter the number"))
+            self.num2 = float(input("Enter the number"))
+            
         def add(self):
-            pass
+            return (self.num1 + self.num2)
         def subtract(self):
-            pass
+            return (self.num2 - self.num1)
         def multiply(self):
-            pass
+            return (self.num1 * self.num2)
         def divide(self):
-            pass
+            return (self.num2 / self.num1)
+            
+    obj = Calculator()
+    
+    addition =obj.add()
+    print(f"Addition : {addition}")
+    
+    substraction =obj.subtract()
+    print(f"Substraction : {substraction}")
+    
+    multiplication =obj.multiply()
+    print(f"Multiplication : {multiplication}")
+    
+    division =obj.divide()
+    print(f"Division : {division}")
+
+    
 
 ## Challenge 3: Implement the Complete Student Class
 
@@ -134,14 +159,27 @@ Coding exercise
 
     class Student:
 
-        def setName(self):
-            pass
-        def getName(self):
-            pass
-        def setRollNumber(self):
-            pass
-        def getRollNumber(self):
-            pass
+        def _setName(self,name):
+            self.__name = name
+    
+        def _getName(self):
+            return self.__name
+            
+        def _setRollNumber(self,rollNumber):
+            self.__rollNumber = rollNumber
+            
+        def _getRollNumber(self):
+            return self.__rollNumber
+            
+    name = str(input("Enter the name : "))
+    rollNumber = int(input("Enter the roll number : "))
+    obj = Student()
+    
+    obj._setName(name)
+    print(f"Name : {obj._getName()}")
+
+    obj._setRollNumber(rollNumber)
+    print(f"Roll Number : {obj._getRollNumber()}")
 
 ## Challenge 4: Implement a Banking Account
 
@@ -186,15 +224,25 @@ Coding exercise
 
     class Account:
 
-        def __init__(self):
+        def __init__(self,title="None", balance =0):
             # write your code here
-            pass
+            self.title = title
+            self.balance = balance
 
-    class SavingsAccount():
+    class SavingsAccount(Account):
 
-        def __init__(self):
+        def __init__(self,title="None", balance=0, interestRate=0):
             # write your code here
-            Pass
+            super().__init__(title, balance)
+            self.interestRate = interestRate
+
+    title = str(input("Enter the title : "))
+    balance = int(input("Enter the balance : "))
+    interestRate = int(input("Enter the interestRate : "))
+    obj = SavingsAccount(title,balance,interestRate)
+    print(f"Title :{obj.title}")
+    print(f"Balance :{obj.balance}")
+    print(f"Interest Rate : {obj.interestRate}")
 
 ## Challenge 5: Handling a Bank Account
 
@@ -275,14 +323,19 @@ Coding exercise
         
         def withdrawal(self, amount):
             # write code here
-            pass
+            self.amount = amount
+            self.balance = self.balance - self.amount
+            print(f"Withdrawal: {self.amount}")
 
         def deposit(self, amount):
             # write code here
-            pass
+            self.amount = amount
+            self.balance = self.amount + self.balance
+            print(f"Deposit: {self.amount}")
+            
         def getBalance(self):
             # write code here
-            pass
+            return self.balance
 
     class SavingsAccount(Account):
         def __init__(self, title=None, balance=0, interestRate=0):
@@ -291,9 +344,15 @@ Coding exercise
         
         def interestAmount(self):
             # write code here
-            pass
+            interestamount= ((self.interestRate * self.balance)/100)
+            return interestamount
 
     #code to test - do not edit this
 
     demo1 = SavingsAccount("Ashish", 2000, 5)   # initializing a SavingsAccount object
+    demo1.deposit(500)
+    print(f"Balance: {demo1.getBalance()}")
+    demo1.withdrawal(500)
+    print(f"Balance: {demo1.getBalance()}")
+    print(f"Interest Amount : {demo1.interestAmount()}")
 
